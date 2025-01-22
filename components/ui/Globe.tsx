@@ -144,22 +144,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     }
   }, [_buildData, _buildMaterial]);  
 
-  const { atmosphereColor, atmosphereAltitude, polygonColor, showAtmosphere } = defaultProps;
-
-  useEffect(() => {
-    if (globeRef.current && globeData) {
-      globeRef.current
-        .hexPolygonsData(countries.features)
-        .hexPolygonResolution(3)
-        .hexPolygonMargin(0.7)
-        .showAtmosphere(showAtmosphere)
-        .atmosphereColor(atmosphereColor)
-        .atmosphereAltitude(atmosphereAltitude)
-        .hexPolygonColor(() => polygonColor);
-      startAnimation();
-    }
-  }, [atmosphereColor, atmosphereAltitude, polygonColor, showAtmosphere, globeData]);
-  
+  const { atmosphereColor, atmosphereAltitude, polygonColor, showAtmosphere } = defaultProps;  
 
   const startAnimation = () => {
     if (!globeRef.current || !globeData) return;
@@ -170,13 +155,9 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .arcStartLng((d) => (d as { startLng: number }).startLng * 1)
       .arcEndLat((d) => (d as { endLat: number }).endLat * 1)
       .arcEndLng((d) => (d as { endLng: number }).endLng * 1)
-      .arcColor((e: any) => (e as { color: string }).color)
-      .arcAltitude((e) => {
-        return (e as { arcAlt: number }).arcAlt * 1;
-      })
-      .arcStroke((e) => {
-        return [0.32, 0.28, 0.3][Math.round(Math.random() * 2)];
-      })
+      .arcColor((e: { color: string }) => e.color)
+      .arcAltitude((e: { arcAlt: number }) => e.arcAlt)
+      .arcStroke((e: { stroke: number }) => e.stroke || 0.3)
       .arcDashLength(defaultProps.arcLength)
       .arcDashInitialGap((e) => (e as { order: number }).order * 1)
       .arcDashGap(15)
@@ -191,7 +172,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
     globeRef.current
       .ringsData([])
-      .ringColor((e: any) => (t: any) => e.color(t))
+      .ringColor((e: { color: (t: number) => string }) => (t: number) => e.color(t))
       .ringMaxRadius(defaultProps.maxRings)
       .ringPropagationSpeed(RING_PROPAGATION_SPEED)
       .ringRepeatPeriod(
@@ -200,25 +181,37 @@ export function Globe({ globeConfig, data }: WorldProps) {
   };
 
   useEffect(() => {
-    if (!globeRef.current || !globeData) return;
+    if (globeRef.current && globeData) {
+      globeRef.current
+        .hexPolygonsData(countries.features)
+        .hexPolygonResolution(3)
+        .hexPolygonMargin(0.7)
+        .showAtmosphere(showAtmosphere)
+        .atmosphereColor(atmosphereColor)
+        .atmosphereAltitude(atmosphereAltitude)
+        .hexPolygonColor(() => polygonColor);
+      startAnimation();
+    }
+  }, [atmosphereColor, atmosphereAltitude, polygonColor, showAtmosphere, globeData, startAnimation]);
 
+  useEffect(() => {
     const interval = setInterval(() => {
       if (!globeRef.current || !globeData) return;
+  
       numbersOfRings = genRandomNumbers(
         0,
         data.length,
         Math.floor((data.length * 4) / 5)
       );
-
+  
       globeRef.current.ringsData(
         globeData.filter((d, i) => numbersOfRings.includes(i))
       );
     }, 2000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [globeRef.current, globeData]);
+  
+    return () => clearInterval(interval);
+  }, [data, globeData]);
+  
 
   return (
     <>

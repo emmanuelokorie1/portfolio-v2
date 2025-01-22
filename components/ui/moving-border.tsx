@@ -82,8 +82,8 @@ export const MovingBorder = ({
   ry?: string;
   [key: string]: any;
 }) => {
-  const pathRef = useRef<any>();
-  const progress = useMotionValue<number>(0);
+  const pathRef = useRef<SVGRectElement | null>(null); // Corrected type
+  const progress = useMotionValue<number>(0); // Specify number type
 
   useAnimationFrame((time) => {
     const length = pathRef.current?.getTotalLength();
@@ -93,14 +93,12 @@ export const MovingBorder = ({
     }
   });
 
-  const x = useTransform(
-    progress,
-    (val) => pathRef.current?.getPointAtLength(val).x
-  );
-  const y = useTransform(
-    progress,
-    (val) => pathRef.current?.getPointAtLength(val).y
-  );
+  const x = useTransform(progress, (val) =>
+    pathRef.current?.getPointAtLength(val).x ?? 0
+  ); // Default to 0 if undefined
+  const y = useTransform(progress, (val) =>
+    pathRef.current?.getPointAtLength(val).y ?? 0
+  ); // Default to 0 if undefined
 
   const transform = useMotionTemplate`translateX(${x}px) translateY(${y}px) translateX(-50%) translateY(-50%)`;
 
@@ -120,7 +118,7 @@ export const MovingBorder = ({
           height="100%"
           rx={rx}
           ry={ry}
-          ref={pathRef}
+          ref={pathRef} // Ensure ref is correct
         />
       </svg>
       <motion.div
