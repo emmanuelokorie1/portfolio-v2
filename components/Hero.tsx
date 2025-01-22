@@ -37,7 +37,7 @@ function Hero() {
           />
 
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi, i'm {name}, a Web and Mobile frontend developer based in Lagos,
+            Hi, i&rsquo;m {name}, a Web and Mobile frontend developer based in Lagos,
             Nigeria.
           </p>
 

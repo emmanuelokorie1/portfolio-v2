@@ -9,19 +9,22 @@ import {
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { name } from "@/data";
-import { RiCloseLine, RiMenu4Line } from "react-icons/ri";
+import { RiMenu4Line } from "react-icons/ri";
 import { useNavStore } from "@/lib/store";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+
+type NavItem = {
+  name: string;
+  link: string;
+  icon?: React.ReactNode;
+};
 
 export const FloatingNav = ({
   navItems,
   className,
 }: {
-  navItems: {
-    name: string;
-    link: string;
-    icon?: React.ReactNode;
-  }[];
+  navItems: NavItem[];
   className?: string;
 }) => {
   const { scrollYProgress } = useScroll();
@@ -98,17 +101,19 @@ export const FloatingNav = ({
           className="flex justify-center items-center gap-2 cursor-pointer"
         >
           <div className="w-[40px] h-[40px] rounded-full overflow-hidden">
-            <img
+            <Image
               src="/proavatar.jpeg"
               alt="Avatar"
-              className="w-full h-full object-cover"
+              width={40}
+              height={40}
+              className="object-cover"
             />
           </div>
           <div className="font-bold md:text-[1rem] text-[.8rem] ">{name}</div>
         </Link>
 
         <div className="flex gap-4">
-          {navItems.map((navItem: any, idx: number) => (
+          {navItems.map((navItem: NavItem, idx: number) => (
             <Link
               key={`link=${idx}`}
               href={navItem.link}

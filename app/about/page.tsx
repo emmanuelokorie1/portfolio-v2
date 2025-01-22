@@ -1,4 +1,3 @@
-import { FloatingNav } from "@/components/ui/FloatingNav";
 import { LinkPreview } from "@/components/ui/LinkPreview";
 import { Spotlight } from "@/components/ui/Spotlight";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
@@ -38,7 +37,7 @@ const page = () => {
           />
 
           <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px1">
-            Hi, I'm Okorie Emmanuel, a{" "}
+            Hi, I&apos;m Okorie Emmanuel, a{" "}
             <span className="text-purple uppercase font-bold">
               front-end developer{" "}
             </span>
@@ -94,7 +93,7 @@ const page = () => {
             began teaching myself the fundamentals of coding, diving into online
             courses, and experimenting with my first small projects. Those early
             experiences set me on a path to turn my passion into a career, and I
-            haven't looked back since. Recently, I’ve started learning{" "}
+            haven&apos;t looked back since. Recently, I&apos;ve started learning{" "}
             <LinkPreview
               url="https://developer.apple.com/xcode/swiftui/"
               className="hover:text-white font-bold italic text-gray-400 underline"
@@ -106,7 +105,7 @@ const page = () => {
           </p>
 
           <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px1">
-            Over the years, I’ve worked on diverse projects that have challenged
+            Over the years, I&apos;ve worked on diverse projects that have challenged
             me to grow and adapt. My journey began in late 2020{" "}
             <LinkPreview
               url="https://edu.sqi.ng/"
@@ -122,7 +121,7 @@ const page = () => {
             </span>
             . These projects taught me the importance of balancing creativity
             with functionality. Whether crafting sleek interfaces or debugging
-            complex issues, I’ve always prioritized delivering work that creates
+            complex issues, I&apos;ve always prioritized delivering work that creates
             meaningful and accessible experiences for users. With each project,
             I continue to refine my craft and explore new ways to make an impact
             in the tech space.
@@ -160,12 +159,12 @@ const page = () => {
           </p>
 
           <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px1">
-            When I’m not at my desk coding, I stay busy exploring the
+            When I&apos;m not at my desk coding, I stay busy exploring the
             ever-evolving world of web development. I keep up with the latest
             trends, tools, and best practices, constantly refining my craft. I
             also enjoy mentoring aspiring developers, helping them navigate
-            their own journeys into tech, and sharing the lessons I’ve learned
-            along the way. Outside of work, you’ll often find me sketching ideas
+            their own journeys into tech, and sharing the lessons I&apos;ve learned
+            along the way. Outside of work, you&apos;ll often find me sketching ideas
             for new projects, reading about UI/UX principles, or finding
             inspiration in everyday interactions with technology.
           </p>
@@ -179,9 +178,9 @@ const page = () => {
           </p>
 
           <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px1">
-            If you’re looking for a front-end developer who brings creativity,
-            technical expertise, and a user-first approach to every project, I’d
-            love to connect. Let’s work together to turn your vision into a
+            If you&apos;re looking for a front-end developer who brings creativity,
+            technical expertise, and a user-first approach to every project, I&apos;d
+            love to connect. Let&apos;s work together to turn your vision into a
             reality and create something truly remarkable.
           </p>
 
@@ -197,12 +196,12 @@ const page = () => {
             <div>
               {techStacks?.map((e, i) => {
                 return (
-                  <div className=" my-6 ">
+                  <div className=" my-6 " key={i}>
                     <div className="text-center py-[2rem] font-bold text-[1.2rem]">{e?.name}</div>
                     <div className=" grid s700:grid-cols-4 s500:grid-cols-3 grid-cols-2 gap-2">
                       {e?.data?.map((item, idx) => {
                         return (
-                          <div className="bg-gray-600 rounded-md ">
+                          <div className="bg-gray-600 rounded-md " key={idx}>
                             <LinkPreview
                               url={item?.url}
                               className="text-purple font-bold flex gap-2 justify-center items-center flex-col "

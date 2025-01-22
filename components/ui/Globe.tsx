@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
 import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber";
@@ -91,16 +91,8 @@ export function Globe({ globeConfig, data }: WorldProps) {
     ...globeConfig,
   };
 
-  useEffect(() => {
-    if (globeRef.current) {
-      _buildData();
-      _buildMaterial();
-    }
-  }, [globeRef.current]);
-
-  const _buildMaterial = () => {
+  const _buildMaterial = useCallback(() => {
     if (!globeRef.current) return;
-
     const globeMaterial = globeRef.current.globeMaterial() as unknown as {
       color: Color;
       emissive: Color;
@@ -111,13 +103,12 @@ export function Globe({ globeConfig, data }: WorldProps) {
     globeMaterial.emissive = new Color(globeConfig.emissive);
     globeMaterial.emissiveIntensity = globeConfig.emissiveIntensity || 0.1;
     globeMaterial.shininess = globeConfig.shininess || 0.9;
-  };
+  }, [globeConfig]);
 
-  const _buildData = () => {
+  const _buildData = useCallback(() => {
     const arcs = data;
-    let points = [];
-    for (let i = 0; i < arcs.length; i++) {
-      const arc = arcs[i];
+    const points = [];
+    for (const arc of arcs) {
       const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
       points.push({
         size: defaultProps.pointSize,
@@ -134,19 +125,26 @@ export function Globe({ globeConfig, data }: WorldProps) {
         lng: arc.endLng,
       });
     }
-
-    // remove duplicates for same lat and lng
+  
+    // Remove duplicates
     const filteredPoints = points.filter(
       (v, i, a) =>
         a.findIndex((v2) =>
-          ["lat", "lng"].every(
-            (k) => v2[k as "lat" | "lng"] === v[k as "lat" | "lng"]
-          )
+          ["lat", "lng"].every((k) => v2[k as "lat" | "lng"] === v[k as "lat" | "lng"])
         ) === i
     );
-
+  
     setGlobeData(filteredPoints);
-  };
+  }, [data, defaultProps.pointSize]);
+  
+  useEffect(() => {
+    if (globeRef.current) {
+      _buildData();
+      _buildMaterial();
+    }
+  }, [_buildData, _buildMaterial]);  
+
+  const { atmosphereColor, atmosphereAltitude, polygonColor, showAtmosphere } = defaultProps;
 
   useEffect(() => {
     if (globeRef.current && globeData) {
@@ -154,15 +152,14 @@ export function Globe({ globeConfig, data }: WorldProps) {
         .hexPolygonsData(countries.features)
         .hexPolygonResolution(3)
         .hexPolygonMargin(0.7)
-        .showAtmosphere(defaultProps.showAtmosphere)
-        .atmosphereColor(defaultProps.atmosphereColor)
-        .atmosphereAltitude(defaultProps.atmosphereAltitude)
-        .hexPolygonColor((e) => {
-          return defaultProps.polygonColor;
-        });
+        .showAtmosphere(showAtmosphere)
+        .atmosphereColor(atmosphereColor)
+        .atmosphereAltitude(atmosphereAltitude)
+        .hexPolygonColor(() => polygonColor);
       startAnimation();
     }
-  }, [globeData]);
+  }, [atmosphereColor, atmosphereAltitude, polygonColor, showAtmosphere, globeData]);
+  
 
   const startAnimation = () => {
     if (!globeRef.current || !globeData) return;
@@ -279,12 +276,12 @@ export function World(props: WorldProps) {
 }
 
 export function hexToRgb(hex: string) {
-  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(shorthandRegex, function (m, r, g, b) {
     return r + r + g + g + b + b;
   });
 
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? {
         r: parseInt(result[1], 16),

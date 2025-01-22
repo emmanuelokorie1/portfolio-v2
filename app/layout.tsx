@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import { navItems } from "@/data";
 import Footer from "@/components/Footer";
+import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,11 +19,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const metadata: Metadata = {
-  title: "Okorie Emmanuel's Portfolio",
-  description:
-    "Welcome to Okorie Emmanuel's Portfolio - Showcasing innovative Mobile and Web frontend development, and creative projects.",
-};
+// const metadata: Metadata = {
+//   title: "Okorie Emmanuel's Portfolio",
+//   description:
+//     "Welcome to Okorie Emmanuel's Portfolio - Showcasing innovative Mobile and Web frontend development, and creative projects.",
+// };
 
 export default function RootLayout({
   children,
@@ -38,6 +39,14 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <Head>
+        <title>Okorie Emmanuel's Portfolio</title>
+        <meta
+          name="description"
+          content="Welcome to Okorie Emmanuel's Portfolio - Showcasing innovative Mobile and Web frontend development, and creative projects."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
       <body
         className={`${geistSans.variable} ${geistMono.variable}  bg-black-100 antialiased`}
       >
