@@ -8,6 +8,7 @@ import { FloatingNav } from "@/components/ui/FloatingNav";
 import { navItems } from "@/data";
 import Footer from "@/components/Footer";
 import Head from "next/head";
+import * as Sentry from "@sentry/nextjs"; 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,6 +19,18 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+// if (typeof window !== "undefined") {
+//   import("./initSentry").then((module) => module.initSentry());
+// }
+
+if (typeof window !== "undefined") {
+  Sentry.init({
+    dsn: process.env.SENTRY_DNS,
+    tracesSampleRate: 1,
+    debug: false,
+  });
+}
 
 // const metadata: Metadata = {
 //   title: "Okorie Emmanuel's Portfolio",
