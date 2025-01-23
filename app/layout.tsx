@@ -32,6 +32,7 @@ if (typeof window !== "undefined") {
   });
 }
 
+
 // const metadata: Metadata = {
 //   title: "Okorie Emmanuel's Portfolio",
 //   description:
@@ -48,6 +49,14 @@ export default function RootLayout({
   useEffect(() => {
     // Ensures the component is rendered only after hydration
     setHydrated(true);
+
+    if (typeof Sentry !== 'undefined') {
+      console.log('Sentry is initialized');
+      // Optionally you can log or send a test error
+      Sentry.captureMessage("Sentry is working!");
+    } else {
+      console.log('Sentry is not defined');
+    }
   }, []);
 
   return (
