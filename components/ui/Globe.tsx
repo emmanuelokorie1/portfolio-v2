@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
 import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber";
@@ -74,7 +74,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
   const globeRef = useRef<ThreeGlobe | null>(null);
 
-  const defaultProps = {
+  const defaultProps = useMemo(() => ({
     pointSize: 1,
     atmosphereColor: "#ffffff",
     showAtmosphere: true,
@@ -89,7 +89,8 @@ export function Globe({ globeConfig, data }: WorldProps) {
     rings: 1,
     maxRings: 3,
     ...globeConfig,
-  };
+  }), [globeConfig]);
+  
 
   const _buildMaterial = useCallback(() => {
     if (!globeRef.current) return;
@@ -125,28 +126,31 @@ export function Globe({ globeConfig, data }: WorldProps) {
         lng: arc.endLng,
       });
     }
-  
+
     // Remove duplicates
     const filteredPoints = points.filter(
       (v, i, a) =>
         a.findIndex((v2) =>
-          ["lat", "lng"].every((k) => v2[k as "lat" | "lng"] === v[k as "lat" | "lng"])
+          ["lat", "lng"].every(
+            (k) => v2[k as "lat" | "lng"] === v[k as "lat" | "lng"]
+          )
         ) === i
     );
-  
+
     setGlobeData(filteredPoints);
   }, [data, defaultProps.pointSize]);
-  
+
   useEffect(() => {
     if (globeRef.current) {
       _buildData();
       _buildMaterial();
     }
-  }, [_buildData, _buildMaterial]);  
+  }, [_buildData, _buildMaterial]);
 
-  const { atmosphereColor, atmosphereAltitude, polygonColor, showAtmosphere } = defaultProps;  
+  const { atmosphereColor, atmosphereAltitude, polygonColor, showAtmosphere } =
+    defaultProps;
 
-  const startAnimation = () => {
+  const startAnimation = useCallback(() => {
     if (!globeRef.current || !globeData) return;
 
     globeRef.current
@@ -161,7 +165,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .arcDashLength(defaultProps.arcLength)
       .arcDashInitialGap((e) => (e as { order: number }).order * 1)
       .arcDashGap(15)
-      .arcDashAnimateTime((e) => defaultProps.arcTime);
+      .arcDashAnimateTime(() => defaultProps.arcTime);
 
     globeRef.current
       .pointsData(data)
@@ -172,13 +176,15 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
     globeRef.current
       .ringsData([])
-      .ringColor((e: { color: (t: number) => string }) => (t: number) => e.color(t))
+      .ringColor(
+        (e: { color: (t: number) => string }) => (t: number) => e.color(t)
+      )
       .ringMaxRadius(defaultProps.maxRings)
       .ringPropagationSpeed(RING_PROPAGATION_SPEED)
       .ringRepeatPeriod(
         (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
       );
-  };
+  }, [data, defaultProps, globeData]);
 
   useEffect(() => {
     if (globeRef.current && globeData) {
@@ -192,26 +198,32 @@ export function Globe({ globeConfig, data }: WorldProps) {
         .hexPolygonColor(() => polygonColor);
       startAnimation();
     }
-  }, [atmosphereColor, atmosphereAltitude, polygonColor, showAtmosphere, globeData, startAnimation]);
+  }, [
+    atmosphereColor,
+    atmosphereAltitude,
+    polygonColor,
+    showAtmosphere,
+    globeData,
+    startAnimation,
+  ]);
 
   useEffect(() => {
     const interval = setInterval(() => {
       if (!globeRef.current || !globeData) return;
-  
+
       numbersOfRings = genRandomNumbers(
         0,
         data.length,
         Math.floor((data.length * 4) / 5)
       );
-  
+
       globeRef.current.ringsData(
         globeData.filter((d, i) => numbersOfRings.includes(i))
       );
     }, 2000);
-  
+
     return () => clearInterval(interval);
   }, [data, globeData]);
-  
 
   return (
     <>
@@ -227,7 +239,7 @@ export function WebGLRendererConfig() {
     gl.setPixelRatio(window.devicePixelRatio);
     gl.setSize(size.width, size.height);
     gl.setClearColor(0xffaaff, 0);
-  }, []);
+  }, [gl, size.height, size.width]);
 
   return null;
 }

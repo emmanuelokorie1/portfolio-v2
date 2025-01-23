@@ -4,6 +4,13 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import React, { useCallback, useMemo, useRef } from "react";
 import * as THREE from "three";
 
+type Uniform = {
+  value: number[] | number[][] | number | THREE.Vector3 | THREE.Vector2;
+  type: string;
+};
+
+type Uniforms = Record<string, Uniform>;
+
 export const CanvasRevealEffect = ({
   animationSpeed = 0.4,
   opacities = [0.3, 0.3, 0.3, 0.5, 0.5, 0.5, 0.8, 0.8, 0.8, 1],
@@ -175,24 +182,25 @@ const DotMatrix: React.FC<DotMatrixProps> = ({
   );
 };
 
-type Uniforms = {
-  [key: string]: {
-    value: number[] | number[][] | number;
-    type: string;
-  };
-};
+// type Uniforms = {
+//   [key: string]: {
+//     value: number[] | number[][] | number;
+//     type: string;
+//   };
+// };
+
+
 const ShaderMaterial = ({
   source,
   uniforms,
   maxFps = 60,
 }: {
   source: string;
-  hovered?: boolean;
   maxFps?: number;
   uniforms: Uniforms;
 }) => {
   const { size } = useThree();
-  const ref = useRef<THREE.Mesh>(null!); // THREE.Mesh for the mesh reference
+  const ref = useRef<THREE.Mesh>(null!); // Using Mesh type correctly here
   let lastFrameTime = 0;
 
   useFrame(({ clock }) => {
@@ -202,25 +210,28 @@ const ShaderMaterial = ({
       return;
     }
     lastFrameTime = timestamp;
-  
-    const material = ref.current.material as THREE.ShaderMaterial; // Specify type
+
+    const material = ref.current.material as THREE.ShaderMaterial;
     const timeLocation = material.uniforms.u_time;
     timeLocation.value = timestamp;
   });
 
   const getUniforms = useCallback(() => {
-    const preparedUniforms: any = {};
-
+    const preparedUniforms: Record<string, { value: any; type: string }> = {};
+  
     for (const uniformName in uniforms) {
       const uniform: any = uniforms[uniformName];
-
+  
       switch (uniform.type) {
         case "uniform1f":
           preparedUniforms[uniformName] = { value: uniform.value, type: "1f" };
           break;
         case "uniform3f":
+          // Check if it's an array or an instance of Vector3
           preparedUniforms[uniformName] = {
-            value: new THREE.Vector3().fromArray(uniform.value),
+            value: Array.isArray(uniform.value)
+              ? new THREE.Vector3().fromArray(uniform.value)
+              : uniform.value,
             type: "3f",
           };
           break;
@@ -230,14 +241,17 @@ const ShaderMaterial = ({
         case "uniform3fv":
           preparedUniforms[uniformName] = {
             value: uniform.value.map((v: number[]) =>
-              new THREE.Vector3().fromArray(v)
+              Array.isArray(v) ? new THREE.Vector3().fromArray(v) : v
             ),
             type: "3fv",
           };
           break;
         case "uniform2f":
+          // Check if it's an array or an instance of Vector2
           preparedUniforms[uniformName] = {
-            value: new THREE.Vector2().fromArray(uniform.value),
+            value: Array.isArray(uniform.value)
+              ? new THREE.Vector2().fromArray(uniform.value)
+              : uniform.value,
             type: "2f",
           };
           break;
@@ -246,29 +260,30 @@ const ShaderMaterial = ({
           break;
       }
     }
-
+  
     preparedUniforms["u_time"] = { value: 0, type: "1f" };
     preparedUniforms["u_resolution"] = {
       value: new THREE.Vector2(size.width * 2, size.height * 2),
-    }; // Initialize u_resolution
+      type: "2f", // Include the required type
+    };    
     return preparedUniforms;
   }, [uniforms, size]);
+  
 
-  // Shader material
   const material = useMemo(() => {
     const materialObject = new THREE.ShaderMaterial({
       vertexShader: `
-      precision mediump float;
-      in vec2 coordinates;
-      uniform vec2 u_resolution;
-      out vec2 fragCoord;
-      void main(){
-        float x = position.x;
-        float y = position.y;
-        gl_Position = vec4(x, y, 0.0, 1.0);
-        fragCoord = (position.xy + vec2(1.0)) * 0.5 * u_resolution;
-        fragCoord.y = u_resolution.y - fragCoord.y;
-      }
+        precision mediump float;
+        in vec2 coordinates;
+        uniform vec2 u_resolution;
+        out vec2 fragCoord;
+        void main(){
+          float x = position.x;
+          float y = position.y;
+          gl_Position = vec4(x, y, 0.0, 1.0);
+          fragCoord = (position.xy + vec2(1.0)) * 0.5 * u_resolution;
+          fragCoord.y = u_resolution.y - fragCoord.y;
+        }
       `,
       fragmentShader: source,
       uniforms: getUniforms(),
@@ -279,15 +294,16 @@ const ShaderMaterial = ({
     });
 
     return materialObject;
-  }, [size.width, size.height, source, getUniforms]);
+  }, [ source, getUniforms]);
 
   return (
-    <mesh ref={ref as any}>
+    <mesh ref={ref}>
       <planeGeometry args={[2, 2]} />
       <primitive object={material} attach="material" />
     </mesh>
   );
 };
+
 
 const Shader: React.FC<ShaderProps> = ({ source, uniforms, maxFps = 60 }) => {
   return (

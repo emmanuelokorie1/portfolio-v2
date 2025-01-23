@@ -2,6 +2,7 @@ import { projects } from "@/data";
 import React from "react";
 import { PinContainer } from "./ui/PinContainer";
 import { FaLocationArrow } from "react-icons/fa6";
+import Image from "next/image";
 
 interface projectProps {
   count?: number;
@@ -39,11 +40,20 @@ const RecentProjects: React.FC<projectProps> = ({
                       className="relative w-full h-full overflow-hidden lg:rounded-3xl"
                       style={{ backgroundColor: "#13162D" }}
                     >
-                      <img src="/bg.png" alt="bgimg" />
+                      <Image
+                        src="/bg.png"
+                        alt="bgimg"
+                        layout="fill"
+                        objectFit="cover"
+                        priority
+                      />
                     </div>
-                    <img
+                    <Image
                       src={img}
                       alt="cover"
+                      layout="intrinsic"
+                      width={570}
+                      height={240}
                       className="z-10 absolute bottom-0"
                     />
                   </div>
@@ -75,7 +85,13 @@ const RecentProjects: React.FC<projectProps> = ({
                             transform: `translateX(-${5 * index + 2}px)`,
                           }}
                         >
-                          <img src={icon} alt="icon5" className="p-2" />
+                          <Image
+                            src={icon}
+                            alt={`icon-${index}`}
+                            width={32}
+                            height={32}
+                            className="p-2"
+                          />
                         </div>
                       ))}
                     </div>

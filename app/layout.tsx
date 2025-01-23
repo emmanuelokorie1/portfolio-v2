@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <title>Okorie Emmanuel's Portfolio</title>
+        <title>{"Okorie Emmanuel's Portfolio"}</title>
         <meta
           name="description"
           content="Welcome to Okorie Emmanuel's Portfolio - Showcasing innovative Mobile and Web frontend development, and creative projects."

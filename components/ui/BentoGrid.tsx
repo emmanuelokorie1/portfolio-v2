@@ -10,6 +10,7 @@ import MagicButton from "./MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
 
 import dynamic from "next/dynamic";
+import { email } from "@/data";
 
 const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 
@@ -54,13 +55,8 @@ export const BentoGridItem = ({
 }) => {
   const [copied, setCopied] = useState(false);
 
-  // const [animationState, setAnimationState] = useState({
-  //   isStopped: !copied,
-  //   isPaused: !copied,
-  // });
-
   const handleCopy = () => {
-    navigator.clipboard.writeText("okorieemmanuel167@gmail.com");
+    navigator.clipboard.writeText(email);
     setCopied(true);
   };
 

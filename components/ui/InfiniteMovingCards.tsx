@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React, { useEffect, useState, useCallback } from "react";
 
-// Move addAnimation outside or memoize it
+// InfiniteMovingCards Component
 const InfiniteMovingCards = ({
   items,
   direction = "left",
@@ -22,23 +22,6 @@ const InfiniteMovingCards = ({
   const scrollerRef = React.useRef<HTMLUListElement>(null);
   const [start, setStart] = useState(false);
 
-  const addAnimation = useCallback(() => {
-    if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children);
-
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem);
-        }
-      });
-
-      getDirection();
-      getSpeed();
-      setStart(true);
-    }
-  }, [direction, speed]);
-
   const getDirection = useCallback(() => {
     if (containerRef.current) {
       containerRef.current.style.setProperty(
@@ -55,6 +38,23 @@ const InfiniteMovingCards = ({
       containerRef.current.style.setProperty("--animation-duration", duration);
     }
   }, [speed]);
+
+  const addAnimation = useCallback(() => {
+    if (containerRef.current && scrollerRef.current) {
+      const scrollerContent = Array.from(scrollerRef.current.children);
+
+      scrollerContent.forEach((item) => {
+        const duplicatedItem = item.cloneNode(true);
+        if (scrollerRef.current) {
+          scrollerRef.current.appendChild(duplicatedItem);
+        }
+      });
+
+      getDirection();
+      getSpeed();
+      setStart(true);
+    }
+  }, [getDirection, getSpeed]);
 
   useEffect(() => {
     addAnimation();
@@ -121,4 +121,5 @@ const InfiniteMovingCards = ({
     </div>
   );
 };
+
 export default InfiniteMovingCards;
