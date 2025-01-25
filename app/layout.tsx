@@ -8,7 +8,7 @@ import { FloatingNav } from "@/components/ui/FloatingNav";
 import { navItems } from "@/data";
 import Footer from "@/components/Footer";
 import Head from "next/head";
-import * as Sentry from "@sentry/nextjs"; 
+import * as Sentry from "@sentry/nextjs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +32,6 @@ if (typeof window !== "undefined") {
   });
 }
 
-
 // const metadata: Metadata = {
 //   title: "Okorie Emmanuel's Portfolio",
 //   description:
@@ -47,17 +46,18 @@ export default function RootLayout({
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    // Ensures the component is rendered only after hydration
+    console.log('Hydration started');
     setHydrated(true);
-
+  
+    console.log('Checking Sentry:', typeof Sentry !== 'undefined');
     if (typeof Sentry !== 'undefined') {
-      console.log('Sentry is initialized');
-      // Optionally you can log or send a test error
-      Sentry.captureMessage("Sentry is working!");
+      console.log('Sentry initialized:', Sentry);
+      Sentry.captureMessage('Sentry is working in production!');
     } else {
-      console.log('Sentry is not defined');
+      console.log('Sentry is not defined in this environment');
     }
   }, []);
+  
 
   return (
     <html lang="en">
