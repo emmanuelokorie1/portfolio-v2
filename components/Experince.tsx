@@ -2,8 +2,11 @@ import { workExperience } from "@/data";
 import React from "react";
 import { Button } from "./ui/moving-border";
 import Image from "next/image";
+// import { LinkPreview } from "./ui/LinkPreview";
 
-function Experince() {
+const Experience = () => {
+  const getRandomDuration = () => Math.floor(Math.random() * 10000) + 10000;
+
   return (
     <div className="pb-20 w-full">
       <h1 className="heading">
@@ -14,35 +17,35 @@ function Experince() {
         {workExperience.map((card) => (
           <Button
             key={card.id}
-            duration={Math.floor(Math.random() * 10000) + 10000}
+            duration={getRandomDuration()}
             borderRadius="1.75rem"
             style={{
-              background: "rgb(4,7,29)",
-              backgroundColor:
+              backgroundImage:
                 "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-              borderRadius: `calc(1.75rem* 0.96)`,
+              borderRadius: `calc(1.75rem * 0.96)`,
             }}
-            // remove bg-white dark:bg-slate-900
             className="flex-1 text-black dark:text-white border-neutral-200 dark:border-slate-800"
           >
-            <div className="flex lg:flex-row flex-col lg:items-center p-3 py-6 md:p-5 lg:p-10 gap-2">
-              {/* <img
-                    src={card.thumbnail}
-                    alt={card.thumbnail}
-                    className="lg:w-32 md:w-20 w-16"
-                  /> */}
-              <div className="lg:w-32 md:w-20 w-16 ">
+            <div className="flex lg:flex-row flex-col lg:items-center p-3 py-6 md:p-5 lg:p-10 gap-4">
+              <div className="lg:w-32 md:w-20 w-16">
                 <Image
                   src={card.thumbnail}
-                  alt={card.thumbnail}
+                  alt={`${card.title} thumbnail`}
                   width={100}
                   height={100}
-                  className="object-cover"
+                  className="object-cover rounded"
                 />
               </div>
               <div className="lg:ms-5">
                 <h1 className="text-start text-xl md:text-2xl font-bold">
-                  {card.title}
+                  <span>{card.title} </span>
+                  {/* <LinkPreview
+                    url={card.link}
+                    className="text-purple font-bold relative"
+                  > */}
+                  <span className="text-purple font-bold">{card.locay}</span>
+                    
+                  {/* </LinkPreview> */}
                 </h1>
                 <p className="text-start text-white-100 mt-3 font-semibold">
                   {card.desc}
@@ -54,6 +57,6 @@ function Experince() {
       </div>
     </div>
   );
-}
+};
 
-export default Experince;
+export default Experience;
