@@ -91,7 +91,8 @@ export const projects = [
       "/stacks/redux.svg",
       "/stacks/aos.jpeg",
     ],
-    link: "https://hopesuperagent.tm30.net/",
+    // link: "https://hopesuperagent.tm30.net/",
+    show: false
   },
   {
     id: 2,
@@ -107,6 +108,7 @@ export const projects = [
       "/stacks/aos.jpeg",
     ],
     link: "https://panafricantowers.com/",
+    show: true
   },
   {
     id: 3,
@@ -121,7 +123,8 @@ export const projects = [
       "/stacks/styled.jpeg",
       "/stacks/aos.jpeg",
     ],
-    link: "https://saas.tm30.net/",
+    // link: "https://saas.tm30.net/",
+    show: false
   },
   {
     id: 4,
@@ -136,7 +139,8 @@ export const projects = [
       "/stacks/styled.jpeg",
       "/stacks/aos.jpeg",
     ],
-    link: "https://partytime.ng/",
+    // link: "https://partytime.ng/",
+    show: false
   },
   // {
   //   id: 3,

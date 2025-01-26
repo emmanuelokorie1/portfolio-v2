@@ -28,13 +28,13 @@ const RecentProjects: React.FC<projectProps> = ({
       >
         {projects
           ?.slice(0, count || projects.length)
-          ?.map(({ id, title, des, des2, img, iconLists, link }) => {
+          ?.map(({ id, title, des, des2, img, iconLists, link, show}) => {
             return (
               <div
                 key={id}
                 className="sm:h-[41rem] lg:min-h-[32.5rem] h-[32rem] flex items-center justify-center sm:w-[570px] w-[80vw]"
               >
-                <PinContainer title={link} href={link}>
+                <PinContainer title={show ? link : "Internal product, can't share cendentials"} href={show ? link : "#"}>
                   <div className="relative flex items-center justify-center sm:w-[570px] w-[80vw] overflow-hidden sm:h-[40vh] h-[30vh] mb-10">
                     <div
                       className="relative w-full h-full overflow-hidden lg:rounded-3xl"
