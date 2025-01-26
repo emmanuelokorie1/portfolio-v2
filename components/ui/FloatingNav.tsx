@@ -49,7 +49,7 @@ export const FloatingNav = ({
 
   const handleDownloadClick = () => {
     // Get the file path of your PDF
-    const filePath = "/cvnew.pdf";
+    const filePath = "/okorie_cv.pdf";
     // Create an anchor element
     const anchor = document.createElement("a");
     // Set the href attribute to the file path
