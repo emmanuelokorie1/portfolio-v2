@@ -73,7 +73,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} overview-hidden bg-black-100 antialiased`}
       >
         <FloatingNav navItems={navItems} />
-        <div>
+        <div className="overflow-hidden">
           {hydrated ? (
             <ThemeProvider
               attribute="class"
