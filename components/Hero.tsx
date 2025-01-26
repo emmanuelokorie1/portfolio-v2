@@ -2,7 +2,7 @@ import React from "react";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import MagicButton from "./ui/MagicButton";
-import { email, linkedin, name } from "@/data";
+import { email, linkedin, name, role } from "@/data";
 
 function Hero() {
   return (
@@ -34,9 +34,9 @@ function Hero() {
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
             words="Transforming Concept into Seamless User Experiences"
           />
-
+{/* Web and Mobile frontend developer */}
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi, i&rsquo;m {name}, a Web and Mobile frontend developer based in Lagos,
+            Hi, i&rsquo;m {name}, a {role} based in Lagos,
             Nigeria.
           </p>
 
@@ -51,7 +51,7 @@ function Hero() {
             </div>
 
             <div>
-              <a href={`http://${linkedin}`}  target="_blank" rel="noopener noreferrer">
+              <a href={`${linkedin}`}  target="_blank" rel="noopener noreferrer">
                 <MagicButton
                   title="Connect Via LinkedIn"
                   // icon={<FaLocationArrow />}

@@ -1,6 +1,10 @@
 export const name = "Okorie Emmanuel";
 export const email = "okorieemmanuel167@gmail.com";
-export const linkedin = "www.linkedin.com/in/okorie-emmanuel";
+export const role = "Frontend Software Engineer";
+export const linkedin = "https://www.linkedin.com/in/okorie-emmanuel/";
+export const github = "https://github.com/emmanuelokorie1";
+export const whatsapp = "https://wa.me/7084844214";
+
 
 export const navItems = [
   { name: "About", link: "/about" },
@@ -278,7 +282,7 @@ export const workExperience = [
 
     locay: "@ TM30",
     link: "https://www.tm30.net/",
-    date: "JAN-2023 - Present",
+    date: "Jan-2023 - Present",
   },
   {
     id: 2,
@@ -288,19 +292,9 @@ export const workExperience = [
     thumbnail: "/exp2.svg",
     locay: "@ HQTEC INC.",
     link: "https://www.hqtecinc.com/",
-    date: "JAN-2024 - DEC-2024",
+    date: "Jan-2024 - Dec-2024",
   },
 
-  {
-    "id": 3,
-    "title": "Frontend Tutor",
-    "desc": "Taught core frontend technologies, mentored students, and guided them through real-world projects to build industry-ready skills.",
-    "className": "md:col-span-2",
-    "thumbnail": "/exp3.svg",
-    "locay": "@ SQI",
-    "link": "https://www.hqtecinc.com/",
-    "date": "JUN-2022 - DEC-2022"
-  },  
   {
     id: 4,
     title: "Frontend Developer & Trainer",
@@ -309,7 +303,18 @@ export const workExperience = [
     thumbnail: "/exp4.svg",
     locay: "@ Freelance",
     link: "#",
-    date: "APRIL-2024 - PRESENT",
+    date: "April-2024 - Present",
+  },
+
+  {
+    id: 3,
+    title: "Frontend Tutor",
+    desc: "Taught core frontend technologies, mentored students, and guided them through real-world projects to build industry-ready skills.",
+    className: "md:col-span-2",
+    thumbnail: "/exp3.svg",
+    locay: "@ SQI",
+    link: "https://www.hqtecinc.com/",
+    date: "Jun-2022 - Dec-2022",
   },
 ];
 
@@ -317,14 +322,17 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link: github
   },
   {
     id: 2,
-    img: "/twit.svg",
+    img: "/wha.svg",
+    link: whatsapp
   },
   {
     id: 3,
     img: "/link.svg",
+    link: linkedin
   },
 ];
 

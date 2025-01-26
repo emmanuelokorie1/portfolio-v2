@@ -1,7 +1,7 @@
 import { LinkPreview } from "@/components/ui/LinkPreview";
 import { Spotlight } from "@/components/ui/Spotlight";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
-import { techStacks } from "@/data";
+import { role, techStacks } from "@/data";
 import Image from "next/image";
 import React from "react";
 
@@ -39,7 +39,7 @@ const page = () => {
           <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px1">
             Hi, I&apos;m Okorie Emmanuel, a{" "}
             <span className="text-purple uppercase font-bold">
-              front-end developer{" "}
+              {role}{" "}
             </span>
             driven by a passion for creating seamless, interactive, and visually
             captivating digital experiences. My expertise lies in crafting

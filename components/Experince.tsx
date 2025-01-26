@@ -50,6 +50,10 @@ const Experience = () => {
                 <p className="text-start text-white-100 mt-3 font-semibold">
                   {card.desc}
                 </p>
+
+                <div className="flex justify-end mt-[1rem] text-white-200 italic text-[.8rem]">
+                  {card?.date}
+                </div>
               </div>
             </div>
           </Button>
