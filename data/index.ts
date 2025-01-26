@@ -206,7 +206,7 @@ export const testimonials = [
     quote:
       "Working with Emmanuel was an incredible experience. His attention to detail, creative approach, and dedication to achieving outstanding results were evident in every step of our collaboration. Emmanuel's passion for development and his ability to bring ideas to life are truly unmatched. If you're looking for a developer to bring your vision to reality, Emmanuel is the perfect choice.",
     name: "Sheidu Susan",
-    title: "Senior Product Designer and UI/UX Specialist",
+    title: "Product Designer and UI/UX Specialist",
     img: "",
     name2: "SS",
   },
@@ -230,7 +230,7 @@ export const testimonials = [
     quote:
       "Collaborating with Okorie Emmanuel was an absolute pleasure. His ability to manage complex tasks while keeping a keen eye on detail made our project run smoothly. He consistently delivered high-quality work on time and was always ready to adapt to changing project requirements. Okorie Emmanuel’s communication and problem-solving skills were invaluable in ensuring the success of the project. If you're looking for a reliable, skilled, and efficient developer, I highly recommend Okorie Emmanuel.",
     name: "Duchess",
-    title: "Project Manager",
+    title: "Project Manager & Data Engineer",
     img: "",
     name2: "D",
   },
