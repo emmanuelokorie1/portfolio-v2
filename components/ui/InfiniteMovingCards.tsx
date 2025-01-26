@@ -12,7 +12,13 @@ const InfiniteMovingCards = ({
   pauseOnHover = true,
   className,
 }: {
-  items: { quote: string; name: string; title: string }[];
+  items: {
+    quote: string;
+    name: string;
+    title: string;
+    img: string;
+    name2: string;
+  }[];
   direction?: "left" | "right";
   speed?: "fast" | "normal" | "slow";
   pauseOnHover?: boolean;
@@ -97,13 +103,24 @@ const InfiniteMovingCards = ({
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 <div className="me-3">
                   {/* Use Image component */}
-                  <Image
-                    src="/profile.svg"
-                    alt="profile"
-                    width={40}
-                    height={40}
-                    priority
-                  />
+                  {/* {item?.img !== "" ? (
+                    <Image
+                      src={item?.img}
+                      // src="/profile.svg"
+                      alt="profile"
+                      width={40}
+                      height={40}
+                      priority
+                    />
+                  ) : (
+                    <div className="text-white">
+                      {item?.item2}
+                    </div>
+                  )} */}
+
+                  <div className="text-white bg-gray-600 font-bold h-[40px] w-[40px] rounded-full flex justify-center items-center">
+                    {item?.name2}
+                  </div>
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="text-xl font-bold leading-[1.6] text-white">

@@ -172,34 +172,67 @@ export const projects = [
 export const testimonials = [
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Working with Okorie Emmanuel was an outstanding experience. His technical expertise and innovative approach to problem-solving played a key role in the successful delivery of our projects. Okorie’s dedication to excellence and attention to detail were evident throughout our collaboration. He consistently exceeded expectations and was a critical asset to our team. I highly recommend Okorie Emmanuel for anyone seeking a passionate and skilled developer.",
+    name: "Afolabi Albert",
+    name2: "AA",
+    title: "CEO of TM30 GLOBAL LIMITED",
+    img: "",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Working with Okorie Emmanuel was an incredible experience. Their attention to detail, creativity, and dedication to the project made a huge difference in the final outcome. From the initial consultation to the completion of the website, Okorie Emmanuel was professional, reliable, and always open to feedback. The result was a website that perfectly captured the essence of our brand, and I couldn’t be happier with the outcome. I highly recommend Okorie Emmanuel for anyone looking for top-tier frontend development.",
+    name: "Yvette",
+    name2: "Y",
+    title: "CEO of RockTheBells Events",
+    img: "",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "It was a pleasure working with Okorie Emmanuel. His expertise, attention to detail, and commitment to delivering quality work were evident in every stage of the project. From design to deployment, Okorie Emmanuel brought creativity and professionalism to the table. He was always proactive, communicative, and responsive to feedback. Thanks to his efforts, we now have a website that aligns perfectly with our brand vision. I highly recommend Okorie Emmanuel for anyone seeking top-quality frontend development.",
+    name: "Ovie",
+    name2: "O",
+    title: "CEO of HQTEC INC.",
+    img: "",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Working with Emmanuel was an incredible experience. His attention to detail, creative approach, and dedication to achieving outstanding results were evident in every step of our collaboration. Emmanuel's passion for development and his ability to bring ideas to life are truly unmatched. If you're looking for a developer to bring your vision to reality, Emmanuel is the perfect choice.",
+    name: "Sheidu Susan",
+    title: "Senior Product Designer and UI/UX Specialist",
+    img: "",
+    name2: "SS",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Emmanuel is an exceptional developer and an amazing team player. Collaborating with him on projects was always a delight. His problem-solving skills, attention to detail, and ability to write clean, efficient code made a significant impact on our work. Emmanuel's passion for frontend development and his dedication to delivering quality are truly inspiring. I highly recommend him to anyone seeking a talented and reliable developer.",
+    name: "Adekoya Dhaniel",
+    title: "Frontend Developer and Teammate",
+    img: "",
+    name2: "AD",
   },
+  {
+    quote:
+      "Working with Okorie Emmanuel was a fantastic experience. As a backend developer and data engineer, I appreciate the seamless integration between our work. Okorie Emmanuel's understanding of both frontend and backend requirements made collaborating incredibly easy. He was always keen to ensure the user interface and backend systems were well-aligned, resulting in a smooth and effective end product. His professionalism, attention to detail, and commitment to excellence truly set him apart. I highly recommend Okorie Emmanuel for any full-stack development project.",
+    name: "Nwachukwu Wisdom",
+    title: "Python Backend Developer and Data Engineer",
+    img: "",
+    name2: "NW",
+  },
+  {
+    quote:
+      "Collaborating with Okorie Emmanuel was an absolute pleasure. His ability to manage complex tasks while keeping a keen eye on detail made our project run smoothly. He consistently delivered high-quality work on time and was always ready to adapt to changing project requirements. Okorie Emmanuel’s communication and problem-solving skills were invaluable in ensuring the success of the project. If you're looking for a reliable, skilled, and efficient developer, I highly recommend Okorie Emmanuel.",
+    name: "Duchess",
+    title: "Project Manager",
+    img: "",
+    name2: "D",
+  },
+
+  // {
+  //   quote:
+  //     "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+  //   name: "Michael Johnson",
+  //   title: "Director of AlphaStream Technologies",
+  // },
 ];
 
 export const companies = [

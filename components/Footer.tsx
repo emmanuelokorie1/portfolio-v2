@@ -1,7 +1,7 @@
 import React from "react";
 import MagicButton from "./ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa6";
-import { email, socialMedia } from "@/data";
+import { email, name, socialMedia } from "@/data";
 import Image from "next/image";
 
 const Footer = () => {
@@ -39,7 +39,7 @@ const Footer = () => {
       </div>
       <div className="flex mt-16 md:mb-[1.7rem] md:flex-row flex-col justify-between items-center">
         <p className="md:text-base text-sm md:font-normal font-light">
-          Copyright © {currentYear} Okorie Emmanuel
+          Copyright © {currentYear} {name}
         </p>
 
         <div className="flex items-center md:gap-3 gap-6">

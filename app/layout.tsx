@@ -46,15 +46,15 @@ export default function RootLayout({
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    console.log('Hydration started');
+    // console.log('Hydration started');
     setHydrated(true);
   
-    console.log('Checking Sentry:', typeof Sentry !== 'undefined');
+    // console.log('Checking Sentry:', typeof Sentry !== 'undefined');
     if (typeof Sentry !== 'undefined') {
-      console.log('Sentry initialized:', Sentry);
+      // console.log('Sentry initialized:', Sentry);
       Sentry.captureMessage('Sentry is working in production!');
     } else {
-      console.log('Sentry is not defined in this environment');
+      // console.log('Sentry is not defined in this environment');
     }
   }, []);
   
