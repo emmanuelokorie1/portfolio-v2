@@ -5,7 +5,6 @@ export const linkedin = "https://www.linkedin.com/in/okorie-emmanuel/";
 export const github = "https://github.com/emmanuelokorie1";
 export const whatsapp = "https://wa.me/7084844214";
 
-
 export const navItems = [
   { name: "About", link: "/about" },
   { name: "Projects", link: "/#projects" },
@@ -79,21 +78,15 @@ export const gridItems = [
 
 export const projects = [
   {
-    id: 1,
-    title: "Agency Banking",
-    des2: "Fintech Solution",
-    des: "A robust admin platform for onboarding agents, assigning terminals, managing roles, and tracking locations via Google Maps API, with commission tracking on various financial services.",
-    img: "/projects/agency.png",
-    iconLists: [
-      "/re.svg",
-      "/tail.svg",
-      "/stacks/styled.jpeg",
-      "/stacks/redux.svg",
-      "/stacks/aos.jpeg",
-    ],
-    // link: "https://hopesuperagent.tm30.net/",
-    show: false
+    id: 8,
+    title: "Animated Apple Iphone 3D Website",
+    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
+    img: "/p4.svg",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
+    link: "https://apple-website-clone-livid.vercel.app/",
+    show: true,
   },
+
   {
     id: 2,
     title: "Pan African Towers",
@@ -108,7 +101,7 @@ export const projects = [
       "/stacks/aos.jpeg",
     ],
     link: "https://panafricantowers.com/",
-    show: true
+    show: true,
   },
   {
     id: 3,
@@ -124,7 +117,7 @@ export const projects = [
       "/stacks/aos.jpeg",
     ],
     // link: "https://saas.tm30.net/",
-    show: false
+    show: false,
   },
   {
     id: 4,
@@ -140,7 +133,24 @@ export const projects = [
       "/stacks/aos.jpeg",
     ],
     // link: "https://partytime.ng/",
-    show: false
+    show: false,
+  },
+
+  {
+    id: 1,
+    title: "Agency Banking",
+    des2: "Fintech Solution",
+    des: "A robust admin platform for onboarding agents, assigning terminals, managing roles, and tracking locations via Google Maps API, with commission tracking on various financial services.",
+    img: "/projects/agency.png",
+    iconLists: [
+      "/re.svg",
+      "/tail.svg",
+      "/stacks/styled.jpeg",
+      "/stacks/redux.svg",
+      "/stacks/aos.jpeg",
+    ],
+    // link: "https://hopesuperagent.tm30.net/",
+    show: false,
   },
   // {
   //   id: 3,
@@ -151,14 +161,6 @@ export const projects = [
   //   link: "https://github.com/adrianhajdin?tab=repositories",
   // },
 
-  // {
-  //   id: 4,
-  //   title: "Animated Apple Iphone 3D Website",
-  //   des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-  //   img: "/p4.svg",
-  //   iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-  //   link: "https://github.com/adrianhajdin/iphone",
-  // },
   // {
   //   id: 5,
   //   title: "Yoom - Video Conferencing App",
@@ -326,17 +328,17 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
-    link: github
+    link: github,
   },
   {
     id: 2,
     img: "/wha.svg",
-    link: whatsapp
+    link: whatsapp,
   },
   {
     id: 3,
     img: "/link.svg",
-    link: linkedin
+    link: linkedin,
   },
 ];
 
