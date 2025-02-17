@@ -82,17 +82,18 @@ export const projects = [
     title: "Animated Apple Iphone 3D Website",
     des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
     img: "/p4.svg",
+    video: "/projects/apple_web_video.mp4",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
     link: "https://apple-website-clone-livid.vercel.app/",
     show: true,
   },
-
   {
     id: 2,
     title: "Pan African Towers",
     des2: "Telecommunication Infrastructure",
     des: "An award-winning telecom infrastructure company offering mobile, broadband, and wireless services across Africa.",
     img: "/projects/pan.png",
+    video: "/projects/panafrica_video.mp4",
     iconLists: [
       "/re.svg",
       "/ts.svg",
