@@ -51,9 +51,9 @@ const Experience = () => {
                   {card.desc}
                 </p>
 
-                <div className="flex justify-end mt-[1rem] text-white-200 italic text-[.8rem]">
+                {/* <div className="flex justify-end mt-[1rem] text-white-200 italic text-[.8rem]">
                   {card?.date}
-                </div>
+                </div> */}
               </div>
             </div>
           </Button>
