@@ -92,7 +92,7 @@ export const projects = [
     title: "HiYield",
     des2: "(Ongoing)",
     des: "The platform will allow users to create savings goals, set up automated savings plans, and track their progress towards achieving their goals.",
-    img: "",
+    img: "/projects/hiyieldimg.png",
     video: "/projects/Hiyield.mov",
     iconLists: [
       "/next.svg",
