@@ -1,4 +1,4 @@
-import { navItems } from "@/data";
+import { cvPdf, navItems } from "@/data";
 import Link from "next/link";
 import React from "react";
 import { RiCloseLine } from "react-icons/ri";
@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 const MobileNav = () => {
   const handleDownloadClick = () => {
     // Get the file path of your PDF
-    const filePath = "/cv.pdf";
+    const filePath = cvPdf;
     // Create an anchor element
     const anchor = document.createElement("a");
     // Set the href attribute to the file path

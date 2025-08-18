@@ -70,7 +70,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} overview-hidden bg-black-100 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden bg-black-100 antialiased`}
       >
         <FloatingNav navItems={navItems} />
         <div className="overflow-hidden">

@@ -4,6 +4,7 @@ export const role = "Frontend Software Engineer";
 export const linkedin = "https://www.linkedin.com/in/okorie-emmanuel/";
 export const github = "https://github.com/emmanuelokorie1";
 export const whatsapp = "https://wa.me/7084844214";
+export const cvPdf = "/okorie-cv.pdf";
 
 export const navItems = [
   { name: "About", link: "/about" },
@@ -53,7 +54,6 @@ export const gridItems = [
     img: "/grid.svg",
     spareImg: "/b4.svg",
   },
-
   {
     id: 5,
     title: "Currently building a JS Animation library",
@@ -90,7 +90,7 @@ export const projects = [
   {
     id: 6,
     title: "HiYield",
-    des2: "(Ongoing)",
+    des2: "Savings Platform (Ongoing)",
     des: "The platform will allow users to create savings goals, set up automated savings plans, and track their progress towards achieving their goals.",
     img: "/projects/hiyieldimg.png",
     video: "/projects/Hiyield.mov",
@@ -101,7 +101,27 @@ export const projects = [
       "/stacks/styled.jpeg",
       "/stacks/aos.jpeg",
     ],
-    link: "https://hiyield-web.vercel.app/home",
+    link: "https://hiyeld-admin.netlify.app/",
+    // link: "https://hiyield-web.vercel.app/home",
+    show: true,
+  },
+  {
+    id: 7,
+    title: "Food Flow",
+    des2: "Agro-Ecommerce",
+    des: "FoodFlow allows farmers and processors to list and request produce, negotiate deals, manage orders and logistics, and track payments and performance in one streamlined marketplace.",
+    img: "/projects/foodflow.png",
+    video: "/projects/foodflowvideo.mov",
+    iconLists: [
+      "/next.svg",
+      "/ts.svg",
+      "/fm.svg",
+      "/tail.svg",
+      "/stacks/query.png",
+      "/stacks/aos.jpeg",
+      "/stacks/redux.svg",
+    ],
+    link: "https://app.foodflow.africa/",
     show: true,
   },
   {
@@ -119,6 +139,23 @@ export const projects = [
       "/stacks/aos.jpeg",
     ],
     link: "https://panafricantowers.com/",
+    show: true,
+  },
+  {
+    id: 9,
+    title: "Spot AI",
+    des2: "(Ongoing) Climate Misinformation Detection",
+    des: "An AI-powered platform that monitors social media and online sources to detect, verify, and track climate-related misinformation. It aggregates posts from platforms like X, YouTube, Reddit, Facebook, Instagram, and TikTok, identifies trends, and allows filtering by source, country, and date. Users receive real-time alerts and can use an assistant to investigate and respond quickly.",
+    img: "/projects/spot.png",
+    video: "/projects/spotaivideo.mov",
+    iconLists: [
+      "/next.svg",
+      "/ts.svg",
+      "/tail.svg",
+      "/fm.svg",
+      "/stacks/aos.jpeg",
+    ],
+    link: "https://spot-ai-user.vercel.app/",
     show: true,
   },
   {
@@ -171,14 +208,6 @@ export const projects = [
     link: "https://partytime.ng/",
     show: false,
   },
-  // {
-  //   id: 3,
-  //   title: "3D Solar System Planets to Explore",
-  //   des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-  //   img: "/p1.svg",
-  //   iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-  //   link: "https://github.com/adrianhajdin?tab=repositories",
-  // },
 
   // {
   //   id: 5,

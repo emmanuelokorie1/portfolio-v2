@@ -7,17 +7,17 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="pb-10 pt-36 overview-hidden">
+    <div className="pb-10 pt-36 overflow-hidden">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
           fill="purple"
         />
         <Spotlight
-          className="top-10 left-full h-[80vh] w-[50vw]"
+          className="top-10 right-0 md:left-full h-[80vh] w-[50vw]"
           fill="white"
         />
-        <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="blue" />
+        <Spotlight className="top-28 right-10 md:left-80 h-[80vh] w-[50vw]" fill="blue" />
       </div>
 
       <div className="h-screen w-full dark:bg-black-100 bg-white  dark:bg-grid-white/[0.05] bg-grid-black/[0.2] absolute top-0 left-0 flex items-center justify-center">
@@ -25,18 +25,18 @@ const page = () => {
       </div>
 
       <div className="flex justify-center relative mt-5 z-10">
-        <div className="max-w-[90vw] lg:max-w-[80vw] flex flex-col items-center justify-center">
-          <h2 className="tracking-widest uppercase text-xs text-center text-blue-100 max-w-80 md:max-w-full ">
+        <div className="max-w-[95vw] lg:max-w-[80vw] flex flex-col items-center justify-center">
+          <h2 className="tracking-widest uppercase text-xs text-center text-blue-100 max-w-80 md:max-w-full px-4">
             {" "}
             ABOUT ME!
           </h2>
           <TextGenerateEffect
-            className="text-center sm:text-[2rem] text-[1.5rem] md:text-[2.5rem] lg:text-[3rem] lg:w-[800px] md:w-[80%] w-[90%]"
+            className="text-center text-[1.2rem] sm:text-[2rem] md:text-[2.5rem] lg:text-[3rem] lg:w-[800px] md:w-[80%] w-[95%] px-4"
             words="Bringing ideas to life with seamless front-end experiences"
             id={4}
           />
 
-          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px1">
+          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px-4 md:px-[3rem] sm:px-[1rem]">
             Hi, I&apos;m Okorie Emmanuel, a{" "}
             <span className="text-purple uppercase font-bold">
               {role}{" "}
@@ -104,7 +104,7 @@ const page = () => {
             for iOS.
           </p>
 
-          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px1">
+          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px-4 md:px-[3rem] sm:px-[1rem]">
             Over the years, I&apos;ve worked on diverse projects that have challenged
             me to grow and adapt. My journey began in late 2020{" "}
             <LinkPreview
@@ -127,7 +127,7 @@ const page = () => {
             in the tech space.
           </p>
 
-          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px1">
+          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px-4 md:px-[3rem] sm:px-[1rem]">
             {" "}
             As my experience grew, I honed my skills in both technical and
             collaborative aspects of development. Working on projects like an
@@ -158,7 +158,7 @@ const page = () => {
             with the vision and meets the overall goals of the team.{" "}
           </p>
 
-          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px1">
+          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px-4 md:px-[3rem] sm:px-[1rem]">
             When I&apos;m not at my desk coding, I stay busy exploring the
             ever-evolving world of web development. I keep up with the latest
             trends, tools, and best practices, constantly refining my craft. I
@@ -169,7 +169,7 @@ const page = () => {
             inspiration in everyday interactions with technology.
           </p>
 
-          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px1">
+          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px-4 md:px-[3rem] sm:px-[1rem]">
             For me, every project is an opportunity to make an impact—not just
             for users but for the brands and businesses I work with. I take
             pride in delivering work that not only meets technical requirements
@@ -177,44 +177,43 @@ const page = () => {
             impression.
           </p>
 
-          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px1">
+          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px-4 md:px-[3rem] sm:px-[1rem]">
             If you&apos;re looking for a front-end developer who brings creativity,
             technical expertise, and a user-first approach to every project, I&apos;d
             love to connect. Let&apos;s work together to turn your vision into a
             reality and create something truly remarkable.
           </p>
 
-          <div className="pt-[6rem]">
-            <h1 className="heading">
+          <div className="pt-[4rem] md:pt-[6rem]">
+            <h1 className="heading px-4">
               My <span className="text-purple">Stacks and Tools</span>
             </h1>
-            <p className="text-center md:tracking-wider text-sm lg:text-[1rem] mx-auto md:w-[60%] sm:w-[80%] pt-2">
+            <p className="text-center md:tracking-wider text-sm lg:text-[1rem] mx-auto md:w-[60%] sm:w-[80%] pt-2 px-4">
               Skilled in creating responsive, user-centric designs that deliver
               seamless and impactful digital user-experiences.
             </p>
 
-            <div>
+            <div className="px-4 md:px-[3rem] sm:px-[1rem]">
               {techStacks?.map((e, i) => {
                 return (
-                  <div className=" my-6 " key={i}>
+                  <div className="my-6" key={i}>
                     <div className="text-center py-[2rem] font-bold text-[1.2rem]">{e?.name}</div>
-                    <div className=" grid s700:grid-cols-4 s500:grid-cols-3 grid-cols-2 gap-2">
+                    <div className="grid grid-cols-2 s500:grid-cols-3 s700:grid-cols-4 gap-3 max-w-full">
                       {e?.data?.map((item, idx) => {
                         return (
-                          <div className="bg-gray-600 rounded-md " key={idx}>
+                          <div className="bg-gray-600 rounded-md p-3 min-h-[100px] s500:min-h-[120px] flex items-center justify-center" key={idx}>
                             <LinkPreview
                               url={item?.url}
-                              className="text-purple font-bold flex gap-2 justify-center items-center flex-col "
+                              className="text-purple font-bold flex gap-1 s500:gap-2 justify-center items-center flex-col text-center w-full"
                             >
-                              {item.name}{" "}
+                              <span className="text-xs s500:text-sm font-medium leading-tight">{item.name}</span>
                               <Image
                                 src={item.logo}
-                                width={100}
-                                height={100}
-                                // quality={quality}
-                                // layout={layout}
+                                width={40}
+                                height={40}
                                 priority={true}
                                 alt={item?.name + " image"}
+                                className="object-contain s500:w-[50px] s500:h-[50px] md:w-[60px] md:h-[60px]"
                               />
                             </LinkPreview>
                           </div>

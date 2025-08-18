@@ -8,7 +8,7 @@ import {
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { name } from "@/data";
+import { cvPdf, name } from "@/data";
 import { RiMenu4Line } from "react-icons/ri";
 import { useNavStore } from "@/lib/store";
 import { useRouter } from "next/navigation";
@@ -49,7 +49,7 @@ export const FloatingNav = ({
 
   const handleDownloadClick = () => {
     // Get the file path of your PDF
-    const filePath = "/cv.pdf";
+    const filePath = cvPdf;
     // Create an anchor element
     const anchor = document.createElement("a");
     // Set the href attribute to the file path

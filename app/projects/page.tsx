@@ -5,17 +5,17 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="pb-10 pt-36 overview-hidden">
+    <div className="pb-10 pt-36 overflow-hidden">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
           fill="purple"
         />
         <Spotlight
-          className="top-10 left-full h-[80vh] w-[50vw]"
+          className="top-10 right-0 md:left-full h-[80vh] w-[50vw]"
           fill="white"
         />
-        <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="blue" />
+        <Spotlight className="top-28 right-10 md:left-80 h-[80vh] w-[50vw]" fill="blue" />
       </div>
 
       <div className="flex justify-center relative mt-5 z-10">
