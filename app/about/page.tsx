@@ -4,6 +4,9 @@ import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import { role, techStacks } from "@/data";
 import Image from "next/image";
 import React from "react";
+import { FloatingNav } from "@/components/ui/FloatingNav";
+import { navItems } from "@/data";
+import MobileNav from "@/components/MobileNav";
 
 const page = () => {
   return (
@@ -24,6 +27,11 @@ const page = () => {
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
 
+      <FloatingNav navItems={navItems} />
+      <div className="block md:hidden">
+        <MobileNav />
+      </div>
+
       <div className="flex justify-center relative mt-5 z-10">
         <div className="max-w-[95vw] lg:max-w-[80vw] flex flex-col items-center justify-center">
           <h2 className="tracking-widest uppercase text-xs text-center text-blue-100 max-w-80 md:max-w-full px-4">
@@ -36,7 +44,7 @@ const page = () => {
             id={4}
           />
 
-          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px-4 md:px-[3rem] sm:px-[1rem]">
+          <div className="text-center md:tracking-wider text-sm lg:text-[1rem] px-4 md:px-[3rem] sm:px-[1rem]">
             Hi, I&apos;m Okorie Emmanuel, a{" "}
             <span className="text-purple uppercase font-bold">
               {role}{" "}
@@ -102,9 +110,9 @@ const page = () => {
             </LinkPreview>{" "}
             to broaden my development skills and explore mobile app development
             for iOS.
-          </p>
+          </div>
 
-          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px-4 md:px-[3rem] sm:px-[1rem]">
+          <div className="text-center md:tracking-wider text-sm lg:text-[1rem] px-4 md:px-[3rem] sm:px-[1rem] mt-6">
             Over the years, I&apos;ve worked on diverse projects that have challenged
             me to grow and adapt. My journey began in late 2020{" "}
             <LinkPreview
@@ -125,9 +133,9 @@ const page = () => {
             meaningful and accessible experiences for users. With each project,
             I continue to refine my craft and explore new ways to make an impact
             in the tech space.
-          </p>
+          </div>
 
-          <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px-4 md:px-[3rem] sm:px-[1rem]">
+          <div className="text-center md:tracking-wider text-sm lg:text-[1rem] px-4 md:px-[3rem] sm:px-[1rem] mt-6">
             {" "}
             As my experience grew, I honed my skills in both technical and
             collaborative aspects of development. Working on projects like an
@@ -156,7 +164,7 @@ const page = () => {
             Collaboration with designers, back-end developers, and project
             managers has been key to ensuring that every project detail aligns
             with the vision and meets the overall goals of the team.{" "}
-          </p>
+          </div>
 
           <p className="text-center md:tracking-wider text-sm lg:text-[1rem] px-4 md:px-[3rem] sm:px-[1rem]">
             When I&apos;m not at my desk coding, I stay busy exploring the

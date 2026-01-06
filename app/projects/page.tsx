@@ -2,6 +2,9 @@ import RecentProjects from "@/components/RecentProjects";
 import { Spotlight } from "@/components/ui/Spotlight";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import React from "react";
+import { FloatingNav } from "@/components/ui/FloatingNav";
+import { navItems } from "@/data";
+import MobileNav from "@/components/MobileNav";
 
 const page = () => {
   return (
@@ -28,8 +31,16 @@ const page = () => {
         </div>
       </div>
 
-      <div>
-        <RecentProjects otherclass="mt-0" />
+      <div className="relative flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
+        <div className="max-w-7xl w-full">
+          <FloatingNav navItems={navItems} />
+          <div className="block md:hidden">
+            <MobileNav />
+          </div>
+          <div>
+            <RecentProjects otherclass="mt-0" />
+          </div>
+        </div>
       </div>
     </div>
   );

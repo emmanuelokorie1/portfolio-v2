@@ -2,12 +2,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
-import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber";
+import { useThree, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
 declare module "@react-three/fiber" {
   interface ThreeElements {
-    threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>;
+    threeGlobe: any;
   }
 }
 
@@ -106,24 +106,42 @@ export function Globe({ globeConfig, data }: WorldProps) {
     globeMaterial.shininess = globeConfig.shininess || 0.9;
   }, [globeConfig]);
 
+  // Filter out invalid data (NaN values) to prevent geometry errors
+  const validData = useMemo(() => {
+    return data.filter((d) => {
+      return (
+        !isNaN(d.startLat) &&
+        !isNaN(d.startLng) &&
+        !isNaN(d.endLat) &&
+        !isNaN(d.endLng)
+      );
+    });
+  }, [data]);
+
   const _buildData = useCallback(() => {
-    const arcs = data;
+    const arcs = validData;
     const points = [];
     for (const arc of arcs) {
       const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
+      const startLat = (arc.startLat * 1);
+      const startLng = (arc.startLng * 1);
+      const endLat = (arc.endLat * 1);
+      const endLng = (arc.endLng * 1);
+
+      // Duplicate check (should already be valid from useMemo above, but good for safety)
       points.push({
         size: defaultProps.pointSize,
         order: arc.order,
         color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
-        lat: arc.startLat,
-        lng: arc.startLng,
+        lat: startLat,
+        lng: startLng,
       });
       points.push({
         size: defaultProps.pointSize,
         order: arc.order,
         color: (t: number) => `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${1 - t})`,
-        lat: arc.endLat,
-        lng: arc.endLng,
+        lat: endLat,
+        lng: endLng,
       });
     }
 
@@ -138,7 +156,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     );
 
     setGlobeData(filteredPoints);
-  }, [data, defaultProps.pointSize]);
+  }, [validData, defaultProps.pointSize]);
 
   useEffect(() => {
     if (globeRef.current) {
@@ -154,7 +172,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     if (!globeRef.current || !globeData) return;
 
     globeRef.current
-      .arcsData(data)
+      .arcsData(validData)
       .arcStartLat((d) => (d as { startLat: number }).startLat * 1)
       .arcStartLng((d) => (d as { startLng: number }).startLng * 1)
       .arcEndLat((d) => (d as { endLat: number }).endLat * 1)
@@ -168,7 +186,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .arcDashAnimateTime(() => defaultProps.arcTime);
 
     globeRef.current
-      .pointsData(data)
+      .pointsData(validData)
       .pointColor((e) => (e as { color: string }).color)
       .pointsMerge(true)
       .pointAltitude(0.0)
@@ -184,7 +202,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .ringRepeatPeriod(
         (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
       );
-  }, [data, defaultProps, globeData]);
+  }, [validData, defaultProps, globeData]);
 
   useEffect(() => {
     if (globeRef.current && globeData) {

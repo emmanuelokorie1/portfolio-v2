@@ -1,12 +1,19 @@
+"use client";
 import React from "react";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import MagicButton from "./ui/MagicButton";
 import { email, linkedin, name, role } from "@/data";
+import { FaEnvelope, FaLinkedin } from "react-icons/fa6";
+import { motion } from "framer-motion";
+import { useState } from "react";
+import ContactModal from "./ui/ContactModal";
 
 function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <div className="pb-20 pt-36" id="home">
+    <div className="pb-20 pt-36 black-gradient" id="home">
       <div>
         <Spotlight
           className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
@@ -23,45 +30,50 @@ function Hero() {
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
 
-      <div className="flex justify-center relative s500:mt-20 mt-5 z-10">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeInOut" }}
+        className="flex justify-center relative s500:mt-20 mt-5 z-10"
+      >
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
           <h2 className="tracking-widest uppercase text-xs text-center text-blue-100 max-w-80 md:max-w-full ">
             {" "}
-            Dynamic Frontend Innovation for Modern Applications
+            More Than Just Code — I Take Ownership
           </h2>
 
           <TextGenerateEffect
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
-            words="Transforming Concept into Seamless User Experiences"
+            words="Transforming Visions into Reality with Complete Project Ownership"
           />
-{/* Web and Mobile frontend developer */}
+          {/* Web and Mobile frontend developer */}
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi, i&rsquo;m {name}, a {role} based in Lagos,
-            Nigeria.
+            Hi, I&rsquo;m {name}, a {role} based in Lagos. I don&rsquo;t just
+            deliver code; I own the outcome, ensuring your projects are scalable,
+            user-centric, and successful.
           </p>
 
-          <div className="s500:flex items-center gap-[1rem] justify-center s500:mt-[3rem] mt-[2rem]">
-            <div>
-              <a href={`mailto:${email}`} className="p-[3px] relative">
-                {/* <div className="absolute inset-0 bg-[#161a31] rounded-lg" /> */}
-                <div className="px-8 py-3 text-center bg-white rounded-[6px]  relative group transition duration-200 hover:text-white-100 text-[#161a31] font-bold hover:bg-transparent">
-                  Contact Me
-                </div>
-              </a>
-            </div>
+          <div className="flex flex-col md:flex-row items-center gap-4 justify-center mt-8">
+            <MagicButton
+              title="Contact Me"
+              icon={<FaEnvelope />}
+              position="right"
+              handleClick={() => setIsModalOpen(true)}
+            />
 
-            <div>
-              <a href={`${linkedin}`}  target="_blank" rel="noopener noreferrer">
-                <MagicButton
-                  title="Connect Via LinkedIn"
-                  // icon={<FaLocationArrow />}
-                  // position="right"
-                />
-              </a>
-            </div>
+            <a href={linkedin} target="_blank" rel="noopener noreferrer" className="w-full">
+              <MagicButton
+                title="Connect Via LinkedIn"
+                icon={<FaLinkedin />}
+                position="right"
+                otherClasses="!bg-[#161a31] whitespace-nowrap"
+              />
+            </a>
           </div>
         </div>
-      </div>
+      </motion.div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }

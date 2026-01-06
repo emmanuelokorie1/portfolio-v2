@@ -1,3 +1,4 @@
+"use client";
 import { cvPdf, navItems } from "@/data";
 import Link from "next/link";
 import React from "react";
@@ -29,13 +30,8 @@ const MobileNav = () => {
       return null; // Prevent rendering until router is available
     }
   
-    const handleNavigation = (
-      e: React.MouseEvent<HTMLAnchorElement>,
-      link: string
-    ) => {
-      e.preventDefault();
-      router.push(link);
-      closeMobileNav(); // Optionally close mobile nav after navigation
+    const handleClick = () => {
+      closeMobileNav();
     };
 
   return (
@@ -60,9 +56,8 @@ const MobileNav = () => {
               <Link
                 key={idx}
                 href={navItem.link}
-                onClick={(e) => handleNavigation(e, navItem.link)}
+                onClick={handleClick}
                 className="text-black dark:text-white text-lg font-semibold hover:text-blue-500"
-                // onClick={closeMobileNav} // Close menu on item click
               >
                 {navItem.name}
               </Link>

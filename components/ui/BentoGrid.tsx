@@ -12,7 +12,7 @@ import { IoCopyOutline } from "react-icons/io5";
 import dynamic from "next/dynamic";
 import { email } from "@/data";
 
-const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 export const BentoGrid = ({
   className,
@@ -79,13 +79,6 @@ export const BentoGridItem = ({
     },
   };
 
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true); // Ensures this part runs only on the client
-  }, []);
-
-  if (!isClient) return null;
 
   return (
     <div
@@ -153,26 +146,25 @@ export const BentoGridItem = ({
 
           {id === 3 && (
             <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
-              <div className="flex flex-col gap-3">
-                {["React.js", "Next.js", "Typescript"]?.map((item, i) => (
+              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
+                {["React.js", "Next.js", "Typescript"].map((item) => (
                   <span
-                    key={i}
-                    className="py-3 px-3 text-xs lg:text-base opacity-50 lg:opacity-100 text-center bg-[#10132e]"
+                    key={item}
+                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-100 
+                    lg:opacity-100 rounded-lg text-center bg-[#10132E]"
                   >
                     {item}
                   </span>
                 ))}
-
-                <span className="py-4 px-3 rounded-lg text-center bg-[#10132e]" />
+                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]" />
               </div>
-
-              <div className="flex flex-col gap-3">
-                <span className="py-4 px-3 rounded-lg text-center bg-[#10132e]" />
-
-                {["Vue", "Redux", "Pinia"]?.map((item, i) => (
+              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
+                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132E]" />
+                {["VueJS", "AWS", "MongoDB"].map((item) => (
                   <span
-                    key={i}
-                    className="py-3 px-3 text-xs lg:text-base opacity-50 lg:opacity-100 text-center bg-[#10132e]"
+                    key={item}
+                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-100 
+                    lg:opacity-100 rounded-lg text-center bg-[#10132E]"
                   >
                     {item}
                   </span>
@@ -184,7 +176,7 @@ export const BentoGridItem = ({
           {id === 6 && (
             <div className="mt-5 relative">
               <div className={`absolute -bottom-5 right-0`}>
-                <Lottie options={defaultOptions} />
+                <Lottie animationData={animationData} loop={copied} autoplay={copied} rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }} />
               </div>
 
               <MagicButton

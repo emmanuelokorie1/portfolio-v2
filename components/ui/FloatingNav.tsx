@@ -7,11 +7,11 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+// import Link from "next/link";
 import { cvPdf, name } from "@/data";
 import { RiMenu4Line } from "react-icons/ri";
 import { useNavStore } from "@/lib/store";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 
 type NavItem = {
@@ -28,6 +28,7 @@ export const FloatingNav = ({
   className?: string;
 }) => {
   const { scrollYProgress } = useScroll();
+  const pathname = usePathname();
 
   const [visible, setVisible] = useState(true); // Default to visible
 
@@ -68,13 +69,7 @@ export const FloatingNav = ({
     return null; // Prevent rendering until router is available
   }
 
-  const handleNavigation = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    link: string
-  ) => {
-    e.preventDefault();
-    router.push(link);
-  };
+
 
   return (
     <AnimatePresence mode="wait">
@@ -95,9 +90,8 @@ export const FloatingNav = ({
           className
         )}
       >
-        <Link
-          href="/#home"
-          onClick={(e) => handleNavigation(e, "/#home")}
+        <div
+          onClick={() => router.push("/#home")}
           className="flex justify-center items-center gap-2 cursor-pointer"
         >
           <div className="w-[40px] h-[40px] rounded-full overflow-hidden">
@@ -110,22 +104,24 @@ export const FloatingNav = ({
             />
           </div>
           <div className="font-bold md:text-[1rem] text-[.8rem] ">{name}</div>
-        </Link>
+        </div>
 
         <div className="flex gap-4">
-          {navItems.map((navItem: NavItem, idx: number) => (
-            <Link
+          {navItems.map((navItem: NavItem, idx: number) => {
+             const isActive = navItem.link === pathname;
+             return (
+            <div
               key={`link=${idx}`}
-              href={navItem.link}
-              onClick={(e) => handleNavigation(e, navItem.link)}
+              onClick={() => router.push(navItem.link)}
               className={cn(
-                "relative dark:text-neutral-50 font-bold items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
+                "cursor-pointer relative font-bold items-center flex space-x-1 hover:text-neutral-500 dark:hover:text-neutral-300",
+                isActive ? "text-purple dark:text-purple" : "text-neutral-600 dark:text-neutral-50"
               )}
             >
               <span className="block md:hidden">{navItem.icon}</span>
               <span className="hidden md:block text-sm">{navItem.name}</span>
-            </Link>
-          ))}
+            </div>
+          )})}
         </div>
         <div
           onClick={handleDownloadClick}

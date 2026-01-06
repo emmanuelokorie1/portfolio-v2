@@ -1,14 +1,29 @@
 "use client";
-import Approach from "@/components/Approach";
-import Client from "@/components/Client";
-import Experince from "@/components/Experince";
-import Grid from "@/components/Grid";
+
 import Hero from "@/components/Hero";
-import RecentProjects from "@/components/RecentProjects";
 import MobileNav from "@/components/MobileNav";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+import MagicButton from "@/components/ui/MagicButton";
+import { FaLocationArrow } from "react-icons/fa6";
+import dynamic from "next/dynamic";
+
+import GridSkeleton from "@/components/ui/GridSkeleton";
+
+const Grid = dynamic(() => import("@/components/Grid"), {
+  ssr: false,
+  loading: () => <GridSkeleton />,
+});
+const RecentProjects = dynamic(() => import("@/components/RecentProjects"), {
+  ssr: false,
+});
+const Client = dynamic(() => import("@/components/Client"), { ssr: false });
+const Experience = dynamic(() => import("@/components/Experience"), {
+  ssr: false,
+});
+const Approach = dynamic(() => import("@/components/Approach"), { ssr: false });
 
 export default function Home() {
+  const router = useRouter();
   return (
     <main className="relative flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
       <div className="max-w-7xl w-full">
@@ -18,19 +33,17 @@ export default function Home() {
         <Hero />
         <Grid />
         <RecentProjects count={4} titleShow={true} />
-        <div className="mb-[6rem]">
-          <Link
-            href={"/projects"}
-            className="p-[3px] relative flex justify-center mt-3"
-          >
-            {/* <div className="absolute inset-0 bg-[#161a31] rounded-lg" /> */}
-            <div className="px-8 w-fit py-3 text-center bg-white rounded-[6px]  relative group transition duration-200 hover:text-white text-[#161a31] font-bold hover:bg-purple">
-              See other projects
-            </div>
-          </Link>
+        <div className="flex justify-center mt-10 mb-20">
+            <MagicButton
+              title="See other projects"
+              position="right"
+              icon={<FaLocationArrow />}
+              handleClick={() => router.push("/projects")}
+              disableAnimations={true}
+            />
         </div>
         <Client />
-        <Experince />
+        <Experience />
         <Approach />
       </div>
     </main>

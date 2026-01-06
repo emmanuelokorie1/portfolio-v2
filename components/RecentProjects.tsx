@@ -52,8 +52,8 @@ const RecentProjects: React.FC<projectProps> = ({
                         <Image
                           src="/bg.png"
                           alt="bgimg"
-                          layout="fill"
-                          objectFit="cover"
+                          fill
+                          className="object-cover"
                           priority
                         />
                       </div>
@@ -61,10 +61,9 @@ const RecentProjects: React.FC<projectProps> = ({
                         <Image
                           src={img}
                           alt="cover"
-                          layout="intrinsic"
                           width={570}
                           height={240}
-                          className="z-10 absolute bottom-0"
+                          className="z-10 absolute bottom-0 w-auto h-auto"
                         />
                       ) : (
                         <>
@@ -72,10 +71,9 @@ const RecentProjects: React.FC<projectProps> = ({
                             <Image
                               src={img}
                               alt="cover"
-                              layout="intrinsic"
                               width={570}
                               height={240}
-                              className="z-10 absolute bottom-0"
+                              className="z-10 absolute bottom-0 w-auto h-auto"
                             />
                           )}
 
