@@ -22,6 +22,7 @@ const MobileNav = () => {
     anchor.click();
   };
 
+  
   const { isMobileNavOpen, closeMobileNav } = useNavStore();
 
     const router = useRouter();

@@ -77,6 +77,16 @@ export const gridItems = [
 ];
 
 export const projects = [
+     {
+    id: 8,
+    title: "Animated Apple Iphone 3D Website",
+    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
+    img: "/p4.svg",
+    video: "/projects/apple_web_video.mp4",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
+    link: "https://apple-website-clone-livid.vercel.app/",
+    show: true,
+  },
   {
     id: 1,
     title: "Agency Banking",
@@ -147,16 +157,7 @@ export const projects = [
     link: "https://panafricantowers.com/",
     show: true,
   },
-   {
-    id: 8,
-    title: "Animated Apple Iphone 3D Website",
-    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/p4.svg",
-    video: "/projects/apple_web_video.mp4",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-    link: "https://apple-website-clone-livid.vercel.app/",
-    show: true,
-  },
+
   {
     id: 9,
     title: "Spot AI",
