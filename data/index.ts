@@ -4,7 +4,7 @@ export const role = "Frontend Software Engineer";
 export const linkedin = "https://www.linkedin.com/in/okorie-emmanuel/";
 export const github = "https://github.com/emmanuelokorie1";
 export const whatsapp = "https://wa.me/7084844214";
-export const cvPdf = "/okorie-cv.pdf";
+export const cvPdf = "/cv/okorie_emmanuel_cv.pdf";
 
 export const navItems = [
   { name: "About", link: "/about" },
